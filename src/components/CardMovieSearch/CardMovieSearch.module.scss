@@ -1,0 +1,90 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    transition: all 500ms;
+    &:hover{
+        box-shadow: 0px 0px 10px black;
+        transform: translateY(-3px);
+    }
+
+        .container__data{
+            display: flex;
+            width: 90%;
+            .container__data_image{
+                width: 80px;
+                img{
+                    width: 80px;
+                    pointer-events: none;
+                }
+            }
+    
+            .container__data_title{
+                display: flex;
+                flex-direction: column;
+                margin-left: 1rem;
+                padding: 0.3rem;
+                width: 100%;
+
+                .container__data_readmore{
+                    font-family: lucida sans;
+                    width: 100%;
+                    word-break: break-all;
+                    border: none;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    transition: all 1s;
+                    font-family: lucida sans;
+                    text-decoration: none;
+                    color: black;
+                }
+
+                .container__extra{
+                    display: flex;
+                    justify-content: flex-start;
+                    width: 40%;
+                    margin-top: 1rem;
+                    p{
+                        padding: 5px 10px;
+                        color: white;
+                        border-radius: 2px;
+                    }
+            
+                    .container__extra_type{
+                        background-color: blue;
+                    }
+            
+                    .container__extra_year{
+                        background-color: red;
+                        margin-left: 1rem;
+                    }
+                }
+            }
+        }
+        
+       .container__star{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10%;
+        svg{
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+       } 
+}
+
+@media screen and (max-width: 968px){
+    .container{
+        width: 100%;
+        .container__extra{
+            width: 60%;
+        }
+    }
+}

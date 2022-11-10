@@ -1,0 +1,104 @@
+.Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    .Container__header{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 50%;
+
+        h2{
+            font-family: lucida sans;
+            font-size: 2rem;
+        }
+    }
+
+    .Container__search{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 1rem auto;
+        width: 50%;
+
+        input{
+            padding: 10px 20px;
+            width: 600px;
+            outline: none;
+            border-radius: 2px;
+            border: none;
+        }
+
+        @keyframes btnSearch {
+            
+            0%{
+                transform: translateY(0px);
+            }
+            50%{
+                transform: translateY(-5px);
+            }
+            
+            100%{
+                transform: translateY(0px);
+
+            }
+        }
+
+        button{
+            padding: 10px 13px;  
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            background-color: red;
+            color: white;
+            font-size: 1rem;
+            font-family: arial;
+            font-weight: 400;
+            margin-left: 1rem;
+            transition: all 1s;
+            &:hover{
+                animation-name: btnSearch;
+                animation-duration: 1s;
+            }
+        }
+    }
+
+    .container__movies{
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 968px){
+    .Container{
+        width: 90%;
+        margin: 0 auto;
+
+        .Container__header{
+            width: 100%;
+            justify-content: center;
+            h2{
+                font-size: 1.2rem;
+            }
+        }
+
+        .Container__search{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 1rem auto;
+           
+        }
+
+        .container__movies{
+            justify-content: flex-start;
+            width: 100%;
+        }
+    }
+}
