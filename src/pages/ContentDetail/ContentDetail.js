@@ -2,14 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Spinner from '../../components/Spinner/Spinner'
-import { getBackup, getMovie } from '../../redux/features/data/dataSlice'
 import style from './ContentDetail.module.scss'
 import { BsFillStarFill, BsTrophyFill } from 'react-icons/bs'
 import CardMovie from '../../components/CardMovie/CardMovie'
 
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { useState } from 'react'
-import { FaMapPin } from 'react-icons/fa'
 import axios from 'axios'
 
 
@@ -24,7 +22,6 @@ export default function ContentDetail() {
     const [movie, setMovie] = useState(false)
     const [movies, setMovies] = useState(false)
 
-    let dispatch = useDispatch()
 
     const main = async () => {
 
@@ -44,7 +41,6 @@ export default function ContentDetail() {
 
             window.localStorage.setItem("search", JSON.stringify(movieSearch))
         } else if (movieSearch?.length === undefined && window.localStorage.getItem("search")) {
-            console.log("entroo")
             setMovies(JSON.parse(window.localStorage.getItem("search")))
         }
         main()
