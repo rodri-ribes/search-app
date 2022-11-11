@@ -28,6 +28,9 @@
                 height: auto;
                 position: relative;
 
+                .container__star__movil{
+                    display: none;
+                }
 
                 @keyframes animationRating {
                     0%{
@@ -227,6 +230,12 @@
 @media screen and (max-width: 968px){
 
     .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+
         .container__content{
             .container__content__sectionOne{
                 flex-direction: column;
@@ -235,22 +244,52 @@
                     img{
                         width: 100%;
                     }
+
+                    .container__star__movil{
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        padding: 8px 8px;
+                        background-color: white;
+                        margin: 1rem;
+                        border-radius: 50%;
+                        display: flex;
+                        svg{
+                            font-size: 1.5rem;
+                        }
+                    }
                 }
                 .container__content__sectionOne__data{
                     margin: 0 auto;
                     width: 100%;
                     .container__content__sectionOne__data__group{
                         flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: flex-start;
                         width: 100%;
 
                         h2{
                             margin: 1rem 0;
+                            width: 100%;
+                        }
+
+                        .container__content__sectionOne__data__group__info{
+                            width: 100%;
+                        }
+
+                        .container__star{
+                            display: none;
                         }
                     }
                 }
             }
             .container__content__sectionFour{
-                flex-direction: column;
+                margin: 0 auto;
+                width: 100%;
+
+                .container__content__sectionFour__related{
+                    flex-direction: column;
+                }
             }
         }
     }

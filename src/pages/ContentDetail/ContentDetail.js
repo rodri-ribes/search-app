@@ -84,6 +84,13 @@ export default function ContentDetail() {
                                         <BsFillStarFill />
                                         <p>{movie?.Ratings[0].Value}</p>
                                     </div>
+                                    <div className={style.container__star__movil}>
+                                        {existe?.includes(id) ?
+                                            <AiFillStar onClick={() => removeFavorite(movie)} />
+                                            :
+                                            <AiOutlineStar onClick={() => addFavorite(movie)} />
+                                        }
+                                    </div>
                                 </div>
                                 <div className={style.container__content__sectionOne__data}>
                                     <div className={style.container__content__sectionOne__data__group}>
@@ -144,30 +151,32 @@ export default function ContentDetail() {
                                 </div>
 
                             }
-                            <div className={style.container__content__sectionFour}>
-                                <h3>Related</h3>
-                                <div className={style.container__content__sectionFour__related}>
-                                    {
-                                        movies ?
-                                            movies?.filter(f => f.imdbID !== id).slice(0, 5).map(p => {
-                                                return (
-                                                    <CardMovie
-                                                        title={p.Title}
-                                                        year={p.Year}
-                                                        type={p.Type}
-                                                        img={p.Poster}
-                                                        id={p.imdbID}
-                                                        key={p.imdbID}
-                                                    />
+                            {
+                                movies.length > 0 &&
+                                <div className={style.container__content__sectionFour}>
+                                    <h3>Related</h3>
+                                    <div className={style.container__content__sectionFour__related}>
+                                        {
+                                            movies ?
+                                                movies?.filter(f => f.imdbID !== id).slice(0, 5).map(p => {
+                                                    return (
+                                                        <CardMovie
+                                                            title={p.Title}
+                                                            year={p.Year}
+                                                            type={p.Type}
+                                                            img={p.Poster}
+                                                            id={p.imdbID}
+                                                            key={p.imdbID}
+                                                        />
+                                                    )
+                                                })
+                                                :
+                                                <Spinner />
+                                        }
+                                    </div>
 
-                                                )
-                                            })
-                                            :
-                                            <Spinner />
-                                    }
                                 </div>
-
-                            </div>
+                            }
                         </div>
                         :
                         <h3 className={style.error}>There is no information about this {category.charAt(0).toUpperCase() + category.slice(1)}</h3>
