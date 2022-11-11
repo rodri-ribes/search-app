@@ -1,7 +1,7 @@
 .container{
     display: flex;
     flex-direction: row;
-    width: 600px;
+    width: 200px;
     justify-content: flex-start;
     align-items: flex-start;
     background-color: white;
@@ -9,21 +9,44 @@
     border-radius: 2px;
     margin-bottom: 1rem;
     transition: all 500ms;
-    &:hover{
-        box-shadow: 0px 0px 10px black;
-        transform: translateY(-3px);
-    }
+
 
         .container__data{
             display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 90%;
-    text-decoration: none;
+            text-decoration: none;
 
             .container__data_image{
-                width: 80px;
+                width: 100%;
+                position: relative;
                 img{
-                    width: 80px;
+                    width: 100%;
+
                     pointer-events: none;
+                }
+                .container__extra{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    position: absolute;
+                    padding: 0.5rem;
+                    top: 0;
+                    p{
+                        padding: 5px 10px;
+                        color: white;
+                        border-radius: 2px;
+                    }
+            
+                    .container__extra_type{
+                        background-color: blue;
+                    }
+            
+                    .container__extra_year{
+                        background-color: red;
+                        margin-left: 1rem;
+                    }
                 }
             }
     
@@ -31,7 +54,6 @@
                 display: flex;
                 
                 flex-direction: column;
-                margin-left: 1rem;
                 padding: 0.3rem;
                 width: 100%;
 
@@ -49,26 +71,7 @@
                     text-align: start;
                 }
 
-                .container__extra{
-                    display: flex;
-                    justify-content: flex-start;
-                    width: 40%;
-                    margin-top: 1rem;
-                    p{
-                        padding: 5px 10px;
-                        color: white;
-                        border-radius: 2px;
-                    }
-            
-                    .container__extra_type{
-                        background-color: blue;
-                    }
-            
-                    .container__extra_year{
-                        background-color: red;
-                        margin-left: 1rem;
-                    }
-                }
+                
             }
         }
         

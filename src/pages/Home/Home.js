@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import CardMovieSearch from '../../components/CardMovieSearch/CardMovieSearch'
 import style from './Home.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { getMovies } from '../../redux/features/data/dataSlice'
+import { cleanMovieAction, getMovies } from '../../redux/features/data/dataSlice'
 import Spinner from '../../components/Spinner/Spinner'
 import { FaSearch } from 'react-icons/fa'
 import Typed from 'typed.js'
@@ -19,6 +19,7 @@ export default function Home() {
     const onSearch = (e) => {
         e.preventDefault()
         dispatch(getMovies(term))
+        console.log("dads", movieSearch)
     }
 
     useEffect(() => {
@@ -28,9 +29,11 @@ export default function Home() {
         }
     }, [term])
 
+
     const present = useRef(null)
 
     useEffect(() => {
+        dispatch(cleanMovieAction())
         const typed = new Typed(present.current, {
             strings: ["Games", "Series", "Movies"],
             startDelay: 300,
@@ -43,7 +46,6 @@ export default function Home() {
             loop: true,
             loopCount: false,
         })
-
     }, [])
 
 
@@ -61,22 +63,20 @@ export default function Home() {
             <div className={style.container__movies}>
                 {
                     term !== "" ?
-                        movieSearch ?
-                            movieSearch?.Search?.map(p => {
-                                return (
-                                    <CardMovieSearch
-                                        title={p.Title}
-                                        year={p.Year}
-                                        type={p.Type}
-                                        img={p.Poster}
-                                        id={p.imdbID}
-                                        object={p}
-                                        key={p.imdbID}
-                                    />
-                                )
-                            })
-                            :
-                            <h4>no existe</h4>
+                        movieSearch.Response === "True" &&
+                        movieSearch?.Search?.map(p => {
+                            return (
+                                <CardMovieSearch
+                                    title={p.Title}
+                                    year={p.Year}
+                                    type={p.Type}
+                                    img={p.Poster}
+                                    id={p.imdbID}
+                                    object={p}
+                                    key={p.imdbID}
+                                />
+                            )
+                        })
                         :
                         null
                 }

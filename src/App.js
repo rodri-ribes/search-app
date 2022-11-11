@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer.js";
 import Home from "./pages/Home/Home.js";
 import ContentDetail from "./pages/ContentDetail/ContentDetail";
 import Favorites from "./pages/Favorites/Favorites";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/:category/:id" element={<ContentDetail />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />

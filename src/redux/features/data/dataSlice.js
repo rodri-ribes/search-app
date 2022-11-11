@@ -5,13 +5,15 @@ export const dataSlice = createSlice({
     name: "data",
     initialState: {
         movieSearch: [],
-        movie: false
     },
     reducers: {
         addMovies: (state, actions) => {
             state.movieSearch = actions.payload
         },
-        addMovie: (state, actions) => {
+        backup: (state, actions) => {
+            state.movieSearch = actions.payload
+        },
+        cleanMovie: (state, actions) => {
             state.movie = actions.payload
         },
 
@@ -21,7 +23,8 @@ export const dataSlice = createSlice({
 
 export const {
     addMovies,
-    addMovie,
+    backup,
+    cleanMovie
 
 } = dataSlice.actions;
 
@@ -39,11 +42,12 @@ export const getMovies = (title) => async (dispatch) => {
     }
 };
 
-export const getMovie = (id) => async (dispatch) => {
-    try {
-        const resp = await axios.get(`https://www.omdbapi.com/?i=${id}&plot=full&apikey=882127a8`);
-        dispatch(addMovie(resp.data));
-    } catch (error) {
-        console.log(error)
-    }
+export const getBackup = (data) => async (dispatch) => {
+
+    dispatch(backup(data));
+
+};
+
+export const cleanMovieAction = () => async (dispatch) => {
+    dispatch(cleanMovie(false));
 };

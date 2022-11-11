@@ -36,18 +36,18 @@ export default function CardMovieSearch({ id, img, year, title, type, object, ki
 
     return (
         <div className={style.container}>
-            <div className={style.container__data}>
+            <Link to={`/${type}/${id}`} className={style.container__data}>
                 <div className={style.container__data_image}>
                     <img src={img} alt={title} />
                 </div>
                 <div className={style.container__data_title}>
-                    <Link className={style.container__data_readmore} to={`/${type}/${id}`}>{title}</Link>
+                    <h3 className={style.container__data_readmore} >{title}</h3>
                     <div className={style.container__extra}>
                         <p className={style.container__extra_type}>{type.charAt(0).toUpperCase() + type.slice(1)}</p>
                         <p className={style.container__extra_year}>{year}</p>
                     </div>
                 </div>
-            </div>
+            </Link>
             <div className={style.container__star}>
                 {existe?.includes(id) ?
                     <AiFillStar onClick={() => removeFavorite(object)} />
