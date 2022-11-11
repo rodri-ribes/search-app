@@ -3,7 +3,6 @@ import CardMovieSearch from '../../components/CardMovieSearch/CardMovieSearch'
 import style from './Home.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { cleanMovieAction, getMovies } from '../../redux/features/data/dataSlice'
-import Spinner from '../../components/Spinner/Spinner'
 import { FaSearch } from 'react-icons/fa'
 import Typed from 'typed.js'
 
@@ -19,7 +18,6 @@ export default function Home() {
     const onSearch = (e) => {
         e.preventDefault()
         dispatch(getMovies(term))
-        console.log("dads", movieSearch)
     }
 
     useEffect(() => {
